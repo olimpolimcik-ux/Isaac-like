@@ -1,0 +1,6 @@
+{
+  "dependencies": [
+    "nlohmann-json"
+  ],
+  "builtin-baseline": "a7e7d196370b53a15e6f5bb1c2a99d1e45936e27"
+}

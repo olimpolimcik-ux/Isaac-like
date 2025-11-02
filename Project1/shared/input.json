@@ -1,0 +1,8 @@
+{
+  "move": { "x": 0, "y": 0 },
+  "attack": { "x": 0, "y": 0 },
+  "bomb": false,
+  "use_item": false,
+  "pause": false,
+  "quit": false
+}

@@ -1,0 +1,33 @@
+# Default configuration for the Python roguelike logic
+
+game:
+  room_width: 20
+  room_height: 12
+  tile_size: 32
+  tick_rate: 60
+  rng_seed: null  # Use system time when null
+
+player:
+  hp: 6
+  speed: 4.0
+  fire_delay: 0.33
+  projectile_speed: 9.0
+  projectile_damage: 3
+
+enemies:
+  variants:
+    - charger
+    - hopper
+    - spitter
+  spawn_min: 3
+  spawn_max: 6
+  speed_min: 1.2
+  speed_max: 2.4
+  hp_min: 2
+  hp_max: 5
+
+pickups:
+  chance_heart: 0.25
+  chance_coin: 0.4
+  chance_key: 0.2
+  chance_bomb: 0.15

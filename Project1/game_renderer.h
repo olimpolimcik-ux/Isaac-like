@@ -1,22 +1,39 @@
 #pragma once
 #include "raylib.h"
 
-struct GameState {
-    float ball_x, ball_y;
-    float ball_speed_x, ball_speed_y;
-    float player1_y, player2_y;
-    int player1_score, player2_score;
-    bool game_running;
-};
+#include <nlohmann/json.hpp>
+#include <string>
 
 class GameRenderer {
 public:
     void Initialize();
     void Shutdown();
-    void UpdateFromPython();  // Читает game_state.json
-    void HandleInput();       // Отправляет ввод в Python
+    void UpdateFromPython();
+    void HandleInput();
     void RenderFrame();
+    bool ShouldClose();
+    void SignalQuit();
 
 private:
-    GameState current_state;
+    nlohmann::json current_state_;
+    std::string shared_dir_ = "shared";
+    float tile_size_ = 32.0f;
+    int room_width_ = 0;
+    int room_height_ = 0;
+    bool quit_requested_ = false;
+
+    void EnsureSharedDirectory();
+    void WriteInput(const nlohmann::json& input);
+    void DrawTilemap();
+    void DrawPickups();
+    void DrawActors();
+    void DrawProjectiles();
+    void DrawEffects();
+    void DrawHud();
+    void DrawMessages();
+    void DrawBossHealth();
+    Color TileFillColor(const std::string& tile) const;
+    Color TileOutlineColor(const std::string& tile) const;
+    Color PickupColor(const std::string& pickup) const;
+    Vector2 WorldToScreen(float x, float y) const;
 };
